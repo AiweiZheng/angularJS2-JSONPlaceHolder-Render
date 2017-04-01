@@ -1,0 +1,97 @@
+<form [ngFormModel]="signupForm" (submit)="onSubmit()">
+    <h2>{{title}}</h2>
+    <div class="row">
+        <div class="col-md-6 well">
+            <fieldset>
+                <legend>User</legend>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                        ngControl="name" 
+                        [ngModel]="user.name"
+                        #name = "ngForm"
+                        type="text" 
+                        id="name">
+                    <div *ngIf="name.touched && name.errors">
+                        <div class="alert alert-danger" 
+                             *ngIf="name.errors.required">"Name is required."
+                        </div>
+                        <div class="alert alert-danger" 
+                             *ngIf="name.errors.cannotCantainSpace">"Name cannot contain spaces."
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                        ngControl="email" 
+                        [(ngModel)] = "user.email"
+                        #email = "ngForm"
+                        type="text" 
+                        id="email">
+                     <div *ngIf="email.touched && email.errors">
+                        <div class="alert alert-danger" 
+                             *ngIf="email.errors.required">"Email is required."
+                        </div>
+                        <div class="alert alert-danger" 
+                             *ngIf="email.errors.invalidEmailAddress">"Email is invalid."
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                        ngControl="phone" 
+                        [(ngModel)] = "user.phone"
+                        #phone = "ngForm"
+                        type="text" 
+                        id="phone">
+                    <div *ngIf="phone.touched && phone.errors">
+                        <div class="alert alert-danger" 
+                             *ngIf="phone.errors.required">"Phone is required."
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset ngControlGroup="address">
+                <legend>Address</legend>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                        ngControl="street" 
+                        [(ngModel)] ="user.address.street"
+                        type="text" 
+                        id="street" 
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="suite">Suite</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                        ngControl="suite" 
+                        [(ngModel)]="user.address.suite"
+                        type="text" 
+                        id="suite">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                            ngControl="city" 
+                            [(ngModel)] = "user.address.city"
+                            type="text" 
+                            id="city">
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">zipCode</label>
+                    <input class="form-control ng-touched ng-invalid" 
+                            ngControl="zipcode" 
+                            [(ngModel)] = "user.address.zipcode"
+                            type="text" 
+                            id="zipcode">
+                </div>
+            </fieldset>
+            <button class="btn btn-primary" 
+                    type="submit" [disabled]="!signupForm.valid">Submit</button>
+        </div>
+    </div>
+</form>
