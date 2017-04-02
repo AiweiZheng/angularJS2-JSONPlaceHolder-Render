@@ -16,8 +16,8 @@ import{SpinnerComponent} from '../shared/spinner.component';
         <hr/>
         <spinner [isLoading] = "isLoading"></spinner>
         <div class="media" *ngFor="#comment of post.comments">
-            <div class="media-left">
-                <a href="#">
+            <div class="media-left ">
+                <a href="#" >  
                     <img class="media-object thumbnail" 
                     [src]="getCommentImageUrl(comment.id)" alt="...">
                 </a>
@@ -28,6 +28,7 @@ import{SpinnerComponent} from '../shared/spinner.component';
             </div>
         </div>
     `,
+    styleUrls:["assets/stylesheets/style.css"],
     directives:[SpinnerComponent]
 })
 

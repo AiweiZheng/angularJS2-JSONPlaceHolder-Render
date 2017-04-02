@@ -2,9 +2,18 @@
  <h1>Post</h1>
   <div class="row">
         <div class="col-md-6">
+                 <select class="form-control" #u (change) ="loadPost({userId:u.value})">
+                     <option value="">
+                         Select a User...
+                     </option>
+                     <option *ngFor="#user of users" value={{user.id}}>
+                         {{user.name}}
+                     </option>
+                 </select>
+                 <pagination [items]="posts" [page-size]="pageSize" (page-changed)="getPostsInPage($event)"></pagination>
                  <spinner [isLoading]="isPostLoading"></spinner> 
                 <ul class="list-group post">
-                    <li *ngFor="#post of posts" 
+                    <li *ngFor="#post of postsPerPage" 
                          class="list-group-item"
                          [class.active]="post==selectedPost" 
                          (click)="onPostClick(post)">

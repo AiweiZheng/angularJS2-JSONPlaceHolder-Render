@@ -1,11 +1,14 @@
+
+.thumbnail {
+  
+    border-radius: 50%;
+}	  
+
 .ng-touched.ng-invalid{
-    border: 1px solid red;
+    border: 10px solid green;
 }
 
 .clickable {
     cursor: pointer;
 }
 
-.thumbnail {
-    border-radius: 100%;
-}	  
