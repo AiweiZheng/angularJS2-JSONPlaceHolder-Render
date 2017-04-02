@@ -12,11 +12,20 @@ export class UserService{
     getUsers(){
         return this._http.get(this._url).map(result=>result.json());
     }
-    getUser(userID){
-        return this._http.get(this._url+"/"+userID).map(result=>result.json())
+    getUser(userId){
+        return this._http.get(this.getUrl(userId)).map(result=>result.json())
     }
     addUser(user){
-        return this._http.put(this._url,JSON.stringify(user)).map(result=>result.json());
+        return this._http.post(this._url,JSON.stringify(user)).map(result=>result.json());
+    }
+    editUser(user){
+        return this._http.put(this.getUrl(user.userId),JSON.stringify(user)).map(result=>result.json());
+    }
+    deleteUser(user){
+        return this._http.delete(this.getUrl(user.userId)).map(result=>result.json());
+    }
+    private getUrl(userId){
+        return this._url+"/"+userId;
     }
 
 }
