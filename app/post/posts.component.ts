@@ -34,7 +34,7 @@ export class PostsComponent {
     posts = [];
     postsPerPage = [];
     selectedPost: Post;
-    pageSize: 10;
+    pageSize= 10;
     constructor(private _postService: PostService, private _userService: UserService) { }
     ngOnInit() {
         var userObservable = this._userService.getUsers();
