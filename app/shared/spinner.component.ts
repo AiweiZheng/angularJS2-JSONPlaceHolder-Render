@@ -1,13 +1,13 @@
-import {Component,Input} from 'angular2/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector:'spinner',
-    template:`
+    selector: 'spinner',
+    template: `
        <i *ngIf="isLoading" class="fa fa-spinner fa-spin fa-3x"></i>
     `
 })
 
-export class SpinnerComponent{
-    @Input()isLoading = true;
+export class SpinnerComponent {
+    @Input() isLoading = true;
 
 }

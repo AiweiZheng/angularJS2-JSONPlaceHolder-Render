@@ -6,14 +6,17 @@
                      <option value="">
                          Select a User...
                      </option>
-                     <option *ngFor="#user of users" value={{user.id}}>
+                     <option *ngFor="let user of users" value={{user.id}}>
                          {{user.name}}
                      </option>
                  </select>
-                 <pagination [items]="posts" [page-size]="pageSize" (page-changed)="getPostsInPage($event)"></pagination>
+                 <pagination [items]="posts" 
+                             [page-size]="pageSize"
+                             (page-changed)="getPostsInPage($event)">
+                 </pagination>
                  <spinner [isLoading]="isPostLoading"></spinner> 
-                <ul class="list-group post">
-                    <li *ngFor="#post of postsPerPage" 
+                 <ul class="list-group post">
+                    <li *ngFor="let post of postsPerPage" 
                          class="list-group-item"
                          [class.active]="post==selectedPost" 
                          (click)="onPostClick(post)">
@@ -22,6 +25,8 @@
                 </ul>
         </div>
         <div class="col-md-6">
-            <post-holder *ngIf="selectedPost" [post]="selectedPost" [isLoading]="isPostDetailLoading"></post-holder>
+            <post-holder *ngIf="selectedPost"
+                         [post]="selectedPost"
+                         [isLoading]="isPostDetailLoading"></post-holder>
         </div>
   </div>

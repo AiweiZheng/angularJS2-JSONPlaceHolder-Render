@@ -1,6 +1,6 @@
-import { Component,Input } from 'angular2/core';
-import{Post} from './post';
-import{SpinnerComponent} from '../shared/spinner.component';
+import { Component,Input } from '@angular/core';
+import{Post}               from './post';
+import{SpinnerComponent}   from '../shared/spinner.component';
 
 @Component({
     selector: 'post-holder',
@@ -15,7 +15,7 @@ import{SpinnerComponent} from '../shared/spinner.component';
         </div>
         <hr/>
         <spinner [isLoading] = "isLoading"></spinner>
-        <div class="media" *ngFor="#comment of post.comments">
+        <div class="media" *ngFor="let comment of post.comments">
             <div class="media-left ">
                 <a href="#" >  
                     <img class="media-object thumbnail" 
@@ -27,9 +27,7 @@ import{SpinnerComponent} from '../shared/spinner.component';
                 {{comment.body}}
             </div>
         </div>
-    `,
-    styleUrls:["assets/stylesheets/style.css"],
-    directives:[SpinnerComponent]
+    `
 })
 
 export class PostComponent{

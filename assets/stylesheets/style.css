@@ -5,7 +5,7 @@
 }	  
 
 .ng-touched.ng-invalid{
-    border: 10px solid green;
+    border: 1px solid red;
 }
 
 .clickable {
