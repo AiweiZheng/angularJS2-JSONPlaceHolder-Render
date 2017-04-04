@@ -7,11 +7,11 @@ import { NotFoundComponent } from './notFound.component';
 import { HomeComponent }     from './home.component';
 
 import { UsersModule }       from './users/user.module';
-import { PostModule }        from './post/post.module';
+import { PostModule }        from './posts/post.module';
 
 import { routing }           from './app.routing';
 import { userRouting }       from './users/user.routing';
-import { postRouting }       from './post/post.routing';
+import { postRouting }       from './posts/post.routing';
 
 import { PreventUnsavedChangesGuard } from './shared/prevent-unsaved-changes-guard.service';
 

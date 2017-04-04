@@ -11,7 +11,7 @@ import { SpinnerComponent }    from '../shared/spinner.component';
 import { PaginationComponent } from '../shared/pagination.component';
 
 @Component({
-    templateUrl: 'app/post/posts.component.html',
+    templateUrl: 'app/posts/posts.component.html',
     styles: [`
             .posts li { cursor: default; }
             .posts li:hover { background: #ecf0f1; } 
