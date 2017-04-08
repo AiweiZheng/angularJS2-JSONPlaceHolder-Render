@@ -1,6 +1,19 @@
 
+body{
+    font-family: Lato;
+    background: #4d3333;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(270deg, #274046 10%, #4d3333 90%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(270deg, #274046 10%, #4d3333 90%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h1 {
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+	 			 0px 8px 13px rgba(0,0,0,0.1),
+	 			 0px 18px 23px rgba(0,0,0,0.1)
+}
+
 .thumbnail {
-  
     border-radius: 50%;
 }	  
 
@@ -11,4 +24,21 @@
 .clickable {
     cursor: pointer;
 }
+
+p::first-letter {
+   float: left;
+   font-size: 1.5rem;
+   font-weight: bold;
+   text-transform: uppercase;
+   padding-right: 2px;
+}
+
+/*select{
+    background-color:pink;
+}
+select option {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}*/
 

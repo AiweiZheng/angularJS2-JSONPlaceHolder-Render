@@ -4,30 +4,15 @@ import{SpinnerComponent}   from '../shared/spinner.component';
 
 @Component({
     selector: 'post-holder',
-    template: `
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{post.title}}</h3>
-            </div>
-            <div class="panel-body">
-                <p>{{post.body}}</p>
-            </div>
-        </div>
-        <hr/>
-        <spinner [isLoading] = "isLoading"></spinner>
-        <div class="media" *ngFor="let comment of post.comments">
-            <div class="media-left ">
-                <a href="#" >  
-                    <img class="media-object thumbnail" 
-                    [src]="getCommentImageUrl(comment.id)" alt="...">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">{{comment.name}}</h4>
-                {{comment.body}}
-            </div>
-        </div>
-    `
+    templateUrl: 'app/posts/post.component.html',
+    styles:[`
+            .separation-line {
+                                height: 12px;
+                                border: 0;
+                                box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+                            }
+        `
+    ]
 })
 
 export class PostComponent{

@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{post.title}}</h3>
+    </div>
+    <div class="panel-body">
+        <p>{{post.body}}</p>
+    </div>
+</div>
+<hr class="separation-line"/>
+<spinner [isLoading]="isLoading"></spinner>
+<div class="media" *ngFor="let comment of post.comments">
+    <div class="media-left ">
+        <a href="#">
+            <img class="media-object thumbnail" [src]="getCommentImageUrl(comment.id)" alt="...">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{comment.name}}</h4>
+        <p> 
+            {{comment.body}}
+        </p>
+    </div>
+</div>

@@ -19,6 +19,7 @@ export class UsersComponent {
             this.isLoading = false;
             this.users = users
         });
+
     }
     onNewUserClick() {
         this._router.navigate(['newuser']);

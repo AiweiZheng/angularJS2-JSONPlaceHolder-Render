@@ -14,12 +14,15 @@ import { PaginationComponent } from '../shared/pagination.component';
     templateUrl: 'app/posts/posts.component.html',
     styles: [`
             .posts li { cursor: default; }
-            .posts li:hover { background: #ecf0f1; } 
+            .posts li:hover { background: #6ca0ac; } 
+            .list-group-item:hover{
+                background: #375962;
+            }
             .list-group-item.active, 
             .list-group-item.active:hover, 
             .list-group-item.active:focus { 
-                background-color: #ecf0f1;
-                border-color: #ecf0f1; 
+                background-color: #6ca0ac;
+                border-color: #6ca0ac; 
                 color: #2c3e50;
             }
      `]
