@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">  
+        <h1>Todo</h1>  
+        <spinner [isLoading]="isLoading"></spinner>  
+        <select class="form-control" #u (change)="loadTodo({userId:u.value})">
+            <option value="">
+                    Select a User...
+            </option>
+            <option *ngFor="let user of users" value={{user.id}}>
+                {{user.name}}
+            </option>
+        </select>
+        <pagination [items]="todos" 
+                             [page-size]="pageSize"
+                             (page-changed)="getTodosInPage($event)">
+        </pagination>
+    </div>
+    <div class="col-md-6">
+         <h2>To-Do List <i class="fa fa-pencil clickable" aria-hidden="true" (click)="toggleAddTodoInput()"></i></h2>
+            <input 
+                [hidden]="!addingTodo" 
+                (keypress)="addTodoInputChanged($event)" 
+                [(ngModel)]="newTodo.title"
+                type="text" 
+                name="" 
+                placeholder="Add New Todo">
+            <ul class="list-group">
+                <li *ngFor="let todo of todosPerPage" 
+                    class="list-group-item" [class.completed]="todo.completed"
+                    (click)="changeTodoStatus(todo)">
+                    <span><i (click)="deleteTodo(todo)" 
+                    class="fa fa-trash" aria-hidden="true"></i></span> {{todo.title}}
+                </li>
+            </ul>
+    </div>
+</div>

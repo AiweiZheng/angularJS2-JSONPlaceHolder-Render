@@ -8,10 +8,12 @@ import { HomeComponent }     from './home.component';
 
 import { UsersModule }       from './users/user.module';
 import { PostModule }        from './posts/post.module';
+import { TodoModule }        from './todos/todo.module';
 
 import { routing }           from './app.routing';
 import { userRouting }       from './users/user.routing';
 import { postRouting }       from './posts/post.routing';
+import {todoRouting}         from './todos/todo.routing';
 
 import { PreventUnsavedChangesGuard } from './shared/prevent-unsaved-changes-guard.service';
 
@@ -20,8 +22,10 @@ import { PreventUnsavedChangesGuard } from './shared/prevent-unsaved-changes-gua
     BrowserModule,
     UsersModule,
     PostModule,
+    TodoModule,
     userRouting,
     postRouting,
+    todoRouting,
     routing
   ],
   declarations: [

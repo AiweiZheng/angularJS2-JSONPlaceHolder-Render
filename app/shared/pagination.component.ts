@@ -41,6 +41,7 @@ export class PaginationComponent implements OnChanges {
         for (var i = 1; i <= this.totalPages; i++) {
             this.pages.push(i);
         }
+        console.log("on change:"+ this.items.length);
     }
     gotoPreviousPage() {
         if (this.currentPage > 1) this.pageChange(--this.currentPage);

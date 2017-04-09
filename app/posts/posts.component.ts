@@ -67,7 +67,6 @@ export class PostsComponent {
         var expectPostNumber = pageIndex * this.pageSize;
         var end = Math.min(this.posts.length, expectPostNumber);
         this.postsPerPage = this.posts.slice((pageIndex - 1) * this.pageSize, end);
-        console.log(this.postsPerPage.length);
     }
     onPostClick(post: Post) {
         if (post == this.selectedPost) {

@@ -2,6 +2,7 @@
  <h1>Post</h1>
   <div class="row">
         <div class="col-md-6">
+                 <spinner [isLoading]="isPostLoading"></spinner> 
                  <select class="form-control" #u (change) ="loadPost({userId:u.value})">
                      <option value="">
                          Select a User...
@@ -14,7 +15,7 @@
                              [page-size]="pageSize"
                              (page-changed)="getPostsInPage($event)">
                  </pagination>
-                 <spinner [isLoading]="isPostLoading"></spinner> 
+               
                  <ul class="list-group post">
                     <li *ngFor="let post of postsPerPage" 
                          class="list-group-item"
