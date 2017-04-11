@@ -1,4 +1,9 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit,  trigger,
+    state,
+    style,
+    transition,
+    animate,
+    keyframes }  from '@angular/core';
 
 import { Observable }         from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
@@ -25,8 +30,22 @@ import { PaginationComponent } from '../shared/pagination.component';
                 border-color: #6ca0ac; 
                 color: #2c3e50;
             }
-     `]
-
+            p::first-letter {
+                float: left;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                padding-right: 2px;
+                }
+     `],
+     animations:[
+         trigger('flyInOut',[
+             transition('void=>*',[
+                 style({transform:'translateY(-100%)'}),
+                 animate('1s')
+             ])
+         ])
+     ]
 })
 
 export class PostsComponent {
@@ -51,6 +70,7 @@ export class PostsComponent {
             }
         )
     }
+
     loadPost(filter) {
         this.selectedPost = null;
         this.isPostLoading = true;
@@ -70,7 +90,6 @@ export class PostsComponent {
     }
     onPostClick(post: Post) {
         if (post == this.selectedPost) {
-            this.selectedPost = null;//reset 
             return;
         }
         this.selectedPost = post;

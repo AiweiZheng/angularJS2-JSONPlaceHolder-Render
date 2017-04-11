@@ -2,15 +2,17 @@
  <h1>Post</h1>
   <div class="row">
         <div class="col-md-6">
-                 <spinner [isLoading]="isPostLoading"></spinner> 
-                 <select class="form-control" #u (change) ="loadPost({userId:u.value})">
-                     <option value="">
-                         Select a User...
-                     </option>
-                     <option *ngFor="let user of users" value={{user.id}}>
-                         {{user.name}}
-                     </option>
-                 </select>
+                 <spinner [isLoading]="isPostLoading"></spinner>
+                 <div class="form-group"> 
+                    <select class="form-control" #u (change) ="loadPost({userId:u.value})">
+                        <option value="">
+                            Select a User...
+                        </option>
+                        <option *ngFor="let user of users" value={{user.id}}>
+                            {{user.name}}
+                        </option>
+                    </select>
+                 </div>
                  <pagination [items]="posts" 
                              [page-size]="pageSize"
                              (page-changed)="getPostsInPage($event)">
@@ -26,8 +28,13 @@
                 </ul>
         </div>
         <div class="col-md-6">
-            <post-holder *ngIf="selectedPost"
-                         [post]="selectedPost"
-                         [isLoading]="isPostDetailLoading"></post-holder>
+            <div *ngIf="selectedPost" [@flyInOut]>
+            <post-holder 
+                     [post]="selectedPost"
+                     [isLoading]="isPostDetailLoading">
+            </post-holder>
+
+           </div>
+
         </div>
   </div>
