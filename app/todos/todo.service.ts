@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TodoService {
-    url = "http://jsonplaceholder.typicode.com";
+    url = "https://jsonplaceholder.typicode.com";
     constructor(private _http: Http) { }
 
     getUserTodos(filter?) {

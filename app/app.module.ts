@@ -9,11 +9,13 @@ import { HomeComponent }     from './home.component';
 import { UsersModule }       from './users/user.module';
 import { PostModule }        from './posts/post.module';
 import { TodoModule }        from './todos/todo.module';
+import { AlbumModule}        from './albums/album.module';
 
 import { routing }           from './app.routing';
 import { userRouting }       from './users/user.routing';
 import { postRouting }       from './posts/post.routing';
-import {todoRouting}         from './todos/todo.routing';
+import { todoRouting }       from './todos/todo.routing';
+import { albumRouting }      from './albums/album.routing';
 
 import { PreventUnsavedChangesGuard } from './shared/prevent-unsaved-changes-guard.service';
 
@@ -23,9 +25,11 @@ import { PreventUnsavedChangesGuard } from './shared/prevent-unsaved-changes-gua
     UsersModule,
     PostModule,
     TodoModule,
+    AlbumModule,
     userRouting,
     postRouting,
     todoRouting,
+    albumRouting,
     routing
   ],
   declarations: [

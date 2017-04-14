@@ -4,7 +4,7 @@ import { UserService }      from './user.service';
 import { SpinnerComponent } from '../shared/spinner.component';
 
 @Component({
-    templateUrl: 'app/users/users.component.html',
+    templateUrl: './users.component.html',
     styles:[`
             .btn-sm{
                 margin-bottom:5px;

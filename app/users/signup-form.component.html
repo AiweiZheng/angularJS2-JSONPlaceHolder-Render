@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form novalidate autocomplete="off"  [formGroup]="form" (ngSubmit)="onSubmit()">
     <h2>{{title}}</h2>
     <div class="row">
         <div class="col-md-6 well">
@@ -11,20 +11,15 @@
                         [(ngModel)]="user.name" #name formControlName="name"
                         type="text" 
                         id="name">
-                    <div *ngIf="name.touched && name.errors">
-                        <div class="alert alert-danger" 
-                             *ngIf="name.errors.required">"Name is required."
-                        </div>
-                        <div class="alert alert-danger" 
-                             *ngIf="name.errors.cannotCantainSpace">"Name cannot contain spaces."
-                        </div>
+                    <div class="alert alert-danger"  *ngIf="form.controls.name.touched && form.controls.name.invalid">
+                       "Name is required."
                     </div>
                 </div>
                
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input class="form-control ng-touched ng-invalid" 
-                    
+        
                         [(ngModel)] = "user.email" #email formControlName="email"
                         type="text" 
                         id="email">

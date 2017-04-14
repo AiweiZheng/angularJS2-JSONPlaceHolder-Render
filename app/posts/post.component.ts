@@ -4,7 +4,7 @@ import{SpinnerComponent}   from '../shared/spinner.component';
 
 @Component({
     selector: 'post-holder',
-    templateUrl: 'app/posts/post.component.html',
+    templateUrl: './post.component.html',
     styles:[`
             .separation-line {
                                 height: 12px;

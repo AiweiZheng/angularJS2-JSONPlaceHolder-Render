@@ -1,5 +1,4 @@
-import { Component, OnInit }  from '@angular/core';
-
+import { Component, OnInit, }  from '@angular/core';
 import { TodoService }         from './todo.service';
 import { UserService }         from '../users/user.service';
 
@@ -12,8 +11,8 @@ import 'rxjs/add/observable/forkJoin';
 
 @Component({
     selector: 'todo',
-    templateUrl: 'app/todos/todos.component.html',
-    styleUrls: ['app/todos/todos.style.css']
+    templateUrl: './todos.component.html',
+    styleUrls: ['./todos.style.css']
 })
 
 export class TodosComponent implements OnInit {
@@ -22,7 +21,7 @@ export class TodosComponent implements OnInit {
     todos = [];
     todosPerPage = [];
     users: [{ id: number, name: string }];
-    pageSize = 10;
+    pageSize = 12;
     newTodo = { title: "" };
 
     constructor(private _todoService: TodoService, private _userService: UserService) {

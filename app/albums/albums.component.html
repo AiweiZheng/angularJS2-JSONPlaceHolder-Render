@@ -1,0 +1,60 @@
+<div class="container">
+    <header class="jumbotron">
+        <h1>Welcome To The Photo Gallery</h1>
+        <p>View our hand-picked photos from all over the world</p>
+        
+        <div class="row">
+            <!--<div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                    <span class="label label-default badge">Select a User</span>
+                   <select class="form-control" #u (change) ="loadAlbums({userId:u.value})">
+                     <option value="">
+                         Select a User...
+                     </option>
+                     <option *ngFor="let user of users" value={{user.id}}>
+                         {{user.name}}
+                     </option>
+                 </select>
+                </div>
+            </div>-->
+
+            <div class="col-lg-6 col-sm-6">
+                <div class="form-group">
+                    <span class="label label-default badge">Select an Album</span>
+                    <select class="form-control" #k (change) ="loadPhotos({albumId:k.value})">
+                                    <option value="">
+                                        Select an Album...
+                                    </option>
+                                    <option *ngFor="let album of albums" value={{album.id}}>
+                                        {{album.title}}
+                                    </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+<!--Image Gallery-->
+
+ <!--position: absolute;
+    overflow-y: scroll;-->
+<div >
+    <div class="col-md-2 col-sm-2 col-lg-2">
+        <div class="row text-center pre-scrollable"  style="display:flex;flex-wrap:wrap;position:absolute;overflow-y: scroll">
+            <div *ngFor="let photo of photos" class="col-md-6 col-sm-6 col-lg-6" style="padding:0;margin:0" >
+                <div class="thumbnail" (click)="setSelectedImage(photo.url)" style="margin: 0">
+                    <img [src]="photo.url">
+                    <!--<div class="caption">
+                        <h4>{{photo.title}}</h4>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 col-sm-10 col-lg-10">
+         <div class="row text-center">
+            <img [src]="selectedImage">
+         </div>
+    </div>
+</div>
+<!--END Image Gallery-->
+</div>

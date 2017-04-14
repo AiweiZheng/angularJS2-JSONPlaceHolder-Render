@@ -1,13 +1,13 @@
-import { Control } from "@angular/common";
+// import { Control } from "@angular/common";
 
 export class CommonValidators {
-    static cannotContainSpace(control: Control) {
+    static cannotContainSpace(control) {
         if (control.value.indexOf(' ') > 0) {
             return { cannotCantainSpace: true };
         }
         return null;
     }
-    static isValidatedEmailAddress(control: Control) {
+    static isValidatedEmailAddress(control) {
         var email = control.value;
         if (email == '')
             return null;

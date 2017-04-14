@@ -26,7 +26,8 @@
                 placeholder="Add New Todo">
             <ul class="list-group">
                 <li *ngFor="let todo of todosPerPage" 
-                    class="list-group-item" [class.completed]="todo.completed"
+                    class="list-group-item" 
+                    [class.completed]="todo.completed"
                     (click)="changeTodoStatus(todo)">
                     <span><i (click)="deleteTodo(todo)" 
                     class="fa fa-trash" aria-hidden="true"></i></span> {{todo.title}}

@@ -8,14 +8,15 @@ import { UserService }      from './user.service';
 import { User }             from './user';
 
 @Component({
-    templateUrl: 'app/users/signup-form.component.html',
+    templateUrl: './signup-form.component.html',
 })
 
 export class SignupFormComponent implements OnInit, OnDestroy, FormComponent {
     title;
     subscription;
     form: FormGroup;
-    user = new User()
+    user = new User();
+ 
     constructor(private _router: Router,
         private _activateRouter: ActivatedRoute,
         private _userService: UserService,
@@ -47,7 +48,9 @@ export class SignupFormComponent implements OnInit, OnDestroy, FormComponent {
         if (!_userId) return;
         this.title = "Edit User";
         this._userService.getUser(_userId).subscribe(
-            user => this.user = user,
+            user => {
+                this.user = user;
+            },
             response => {
                 if (response.status == 404) {
                     this._router.navigate(['notFound']);
@@ -60,12 +63,20 @@ export class SignupFormComponent implements OnInit, OnDestroy, FormComponent {
     }
 
     onSubmit() {
-        if (this.user.userid) {
-            this._userService.editUser(this.user);
+        if (this.user.id) {
+            this._userService.editUser(this.user).subscribe(
+                data =>{
+                    this._router.navigate(['users']);
+                },
+                error=>{
+                    //will return "404", because jsonholder api does not have this specific route.
+                     this._router.navigate(['users']); 
+                }
+            );
         } else {
             this._userService.addUser(this.user).subscribe(data => {
                 this.form.markAsPristine();
-                this._router.navigate(['Users']);
+                this._router.navigate(['users']);
             })
         }
     }

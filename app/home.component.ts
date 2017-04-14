@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit,  trigger,
+    state,
+    style,
+    transition,
+    animate,
+    keyframes }  from '@angular/core';
 
 @Component({
-    templateUrl: 'app/home.component.html',
+    templateUrl: './home.component.html',
     styles: [`
               .content{
                        padding-top: 20%;
@@ -14,8 +19,30 @@ import { Component } from '@angular/core';
 	                    font-weight: 700;
 	                    font-size: 5em;
                     }
+              canvas{
+                        width: 100%;
+                        height: 100%;
+                        background: black;
+                    }
               `
-    ]
+    ],
+     animations:[
+         trigger('flyInOut',[
+             transition('void=>*',[
+                 style({transform:'translateX(-100%)'}),
+                 animate('1s')
+             ]),
+             transition('*=>void',[
+                 style({transform:'translateX(100%)'}),
+                 animate('1s')
+             ])
+         ])
+     ]
 })
 
-export class HomeComponent { }
+export class HomeComponent {
+    showDiv = true;
+    toggleDiv(){
+        this.showDiv = !this.showDiv;
+    }
+ }
