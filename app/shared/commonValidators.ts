@@ -1,4 +1,3 @@
-// import { Control } from "@angular/common";
 
 export class CommonValidators {
     static cannotContainSpace(control) {

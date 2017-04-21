@@ -23,7 +23,7 @@ export class TodosComponent implements OnInit {
     users: [{ id: number, name: string }];
     pageSize = 12;
     newTodo = { title: "" };
-
+    error;
     constructor(private _todoService: TodoService, private _userService: UserService) {
     }
 
@@ -36,11 +36,14 @@ export class TodosComponent implements OnInit {
                 this.users = joined[0];
                 this.todos = joined[1];
                 this.getTodosInPage(1);
-            })
+            },
+            err => this.error = err);   
     }
 
     loadTodo(userId) {
-        this._todoService.getUserTodos(userId).subscribe(todos => this.todos = todos);
+        this._todoService.getUserTodos(userId).subscribe(
+            todos => this.todos = todos,
+            err => this.error = err);
         this.getTodosInPage(1);
     }
 
