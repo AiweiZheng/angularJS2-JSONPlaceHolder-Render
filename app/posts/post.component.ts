@@ -18,11 +18,11 @@ import{SpinnerComponent}   from '../shared/spinner.component';
     ]
 })
 
-export class PostComponent{
-    @Input() post:Post;
+export class PostComponent {
+    @Input() post: Post;
     @Input() isLoading;
-    getCommentImageUrl(commentID){
+    getCommentImageUrl(commentID) {
     
-       return "http://lorempixel.com/80/80/people/?random="+commentID;
+       return "http://lorempixel.com/80/80/people/?random=" + commentID;
     }
 }

@@ -52,6 +52,7 @@ export class PostsComponent {
 
     isPostLoading = true;
     isPostDetailLoading = true;
+    error;
     users: [{ id: number, name: string }];
     posts = [];
     postsPerPage = [];
@@ -67,6 +68,9 @@ export class PostsComponent {
                 this.users = joined[0];
                 this.posts = joined[1];
                 this.getPostsInPage(1);
+            },
+            err=> {
+                this.error = err;
             }
         )
     }
@@ -79,6 +83,9 @@ export class PostsComponent {
                 this.posts = userPosts;
                 this.isPostLoading = false
                 this.getPostsInPage(1);
+            },
+            err=> {
+                this.error = err;
             }
         )
     }
@@ -97,6 +104,9 @@ export class PostsComponent {
             comments => {
                 this.isPostDetailLoading = false;
                 this.selectedPost.comments = comments
+            },
+            err => {
+                this.error = err;
             }
         )
     }
