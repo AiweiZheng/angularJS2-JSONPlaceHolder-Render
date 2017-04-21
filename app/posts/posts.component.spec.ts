@@ -63,7 +63,7 @@ describe('PostsComponent', () => {
     describe('ngOnInit():failed to retrieve data from the Server', () => {
         it('should set error to the message returned from the userService when failed to retrieve data from userService', () => {
 
-            var error = 'error';
+            let error = 'error';
             spyOn(userService, 'getUsers').and.returnValue( Observable.throw(error) );
             spyOn(postService, 'getUserPosts').and.returnValue( Observable.from([ [] ]) );
 
@@ -74,7 +74,7 @@ describe('PostsComponent', () => {
 
         it('should set error to the message returned from the postService when failed to retrieve data from postService', () => {
 
-            var error = 'error';
+            let error = 'error';
             spyOn(userService, 'getUsers').and.returnValue( Observable.from([ [] ]) );
             spyOn(postService, 'getUserPosts').and.returnValue( Observable.throw( error ) );
 
@@ -86,7 +86,7 @@ describe('PostsComponent', () => {
 
     describe('loadPost():', () => {
         it('should set selectedPost to null', () => {
-            var filter = 1;
+            let filter = 1;
             spyOn(postService, 'getUserPosts').and.returnValue( Observable.from([ [] ]));
             
             component.loadPost( filter );
@@ -104,7 +104,7 @@ describe('PostsComponent', () => {
                 expect( component.posts ).toBe( posts );
             });
 
-            it('should set isLoadingPost property to true when retrieved users and posts', ()=> {
+            it('should set isLoadingPost property to true when retrieved data from server', ()=> {
                 spyOn(postService, 'getUserPosts').and.returnValue( Observable.from([ [] ]) );
 
                 component.loadPost(1);
@@ -112,7 +112,7 @@ describe('PostsComponent', () => {
                 expect( component.isPostLoading ).toBeFalsy();
             });
 
-            it('should call getPostsInPage after retrieved users and posts', () => {
+            it('should call getPostsInPage after retrieved data from server', () => {
                 spyOn(postService, 'getUserPosts').and.returnValue( Observable.from([ [] ]) );
 
                 component.loadPost(1);
@@ -126,7 +126,7 @@ describe('PostsComponent', () => {
         it('Should set postsPerPage to be a subset of posts in PageSize when (pageIndex * this.pageSize) is less than or equal to the lenght of posts', () => {
             component.posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             component.pageSize = 5;
-            var pageIndex = 2;
+            let pageIndex = 2;
 
             component.getPostsInPage(pageIndex);
 
@@ -135,7 +135,7 @@ describe('PostsComponent', () => {
          it('Should set postsPerPage to be a subset of posts from ((pageIndex-1) * this.pageSize) to the end when (pageIndex * this.pageSize) is larger than the lenght of posts', () => {
             component.posts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
             component.pageSize = 5;
-            var pageIndex = 3;
+            let pageIndex = 3;
 
             component.getPostsInPage(pageIndex);
 
@@ -148,7 +148,7 @@ describe('PostsComponent', () => {
             
         })
         it('should keep selectedPost same if input is already selected', () => {
-            var post : Post = {
+            let post : Post = {
                 userid:1,
                 id:1,
                 title: "test",
@@ -164,7 +164,7 @@ describe('PostsComponent', () => {
     });
 
     it('should set selectedPost to input and selectedPost are not same object', () => {
-        var post : Post = {
+        let post : Post = {
                 userid:1,
                 id:1,
                 title: "test",
@@ -179,7 +179,7 @@ describe('PostsComponent', () => {
     });
 
     it('should set isPostDetailLoading to false after successfully retrieved comments from service if input and selectedPost are not same object', () => {
-        var post : Post = {
+        let post : Post = {
                 userid:1,
                 id:1,
                 title: "test",
@@ -194,7 +194,7 @@ describe('PostsComponent', () => {
     });
 
     it('should set selectedPost.comment to the date loaded from the server after successfully retrieved comments from service if input and selectedPost are not same object', () => {
-        var post : Post = {
+        let post : Post = {
                 userid:1,
                 id:1,
                 title: "test",
@@ -202,7 +202,7 @@ describe('PostsComponent', () => {
                 comments: []
         };
 
-        var comments = [1,2,3];
+        let comments = [1,2,3];
         spyOn(postService, 'getComments').and.returnValue( Observable.from([ comments ]));
         
         component.onPostClick(post);
@@ -212,7 +212,7 @@ describe('PostsComponent', () => {
 
      it('should set error to the message returned from the postService when failed to retrieve comments from the server', () => {
 
-            var post : Post = {
+            let post : Post = {
                 userid:1,
                 id:1,
                 title: "test",
@@ -220,7 +220,7 @@ describe('PostsComponent', () => {
                 comments: []
         };
 
-        var error = "error";
+        let error = "error";
         spyOn(postService, 'getComments').and.returnValue( Observable.throw(error));
         
         component.onPostClick(post);

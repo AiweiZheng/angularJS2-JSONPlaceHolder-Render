@@ -58,7 +58,6 @@ export class TodosComponent implements OnInit {
     }
 
     deleteTodo(todo) {
-        //should delete from the database //todo 
         if (confirm("Are you sure to delete '" + todo.title + "?")) {
             var index = this.todosPerPage.indexOf(todo);
             this.todosPerPage.splice(index, 1);

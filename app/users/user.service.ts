@@ -20,8 +20,8 @@ export class UserService {
     editUser(user) {
         return this._http.put(this.getUrl(user.userId), JSON.stringify(user)).map(result => result.json());
     }
-    deleteUser(user) {
-        return this._http.delete(this.getUrl(user.userId)).map(result => result.json());
+    deleteUser(userId) {
+        return this._http.delete(this.getUrl(userId)).map(result => result.json());
     }
     private getUrl(userId) {
         return this._url + "/" + userId;

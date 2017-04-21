@@ -13,18 +13,19 @@ import { SpinnerComponent } from '../shared/spinner.component';
 })
   
 export class UsersComponent {
-    isLoading = true;
+    isLoading;
     users: any[];
+    error;
     constructor(
         private _userService: UserService,
         private _router: Router) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this._userService.getUsers().subscribe(users => {
             this.isLoading = false;
-            this.users = users
-        });
-
+            this.users = users },
+            err => this.error = err );
     }
     onNewUserClick() {
         this._router.navigate(['newuser']);
@@ -33,9 +34,9 @@ export class UsersComponent {
         if (confirm("Are you sure to delete " + user.name + "?")) {
             var index = this.users.indexOf(user);
             this.users.splice(index, 1);
-            this._userService.deleteUser(user).subscribe(null,
+            this._userService.deleteUser(user.id).subscribe(null,
                 error => {
-                    alert("Could not delete the user");
+                    alert("Could not delete the user.");
                     this.users.splice(index, 0, user);
                 }
             )

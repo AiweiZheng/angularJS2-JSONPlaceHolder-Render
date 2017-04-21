@@ -58,7 +58,7 @@ export class SignupFormComponent implements OnInit, OnDestroy, FormComponent {
             }
         );
     }
-    ngOnDestroy() {
+    ngOnDestroy() { 
         this.subscription.unsubscribe();
     }
 
@@ -69,7 +69,6 @@ export class SignupFormComponent implements OnInit, OnDestroy, FormComponent {
                     this._router.navigate(['users']);
                 },
                 error=>{
-                    //will return "404", because jsonholder api does not have this specific route.
                      this._router.navigate(['users']); 
                 }
             );

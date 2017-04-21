@@ -42,7 +42,4 @@ import { Component, OnInit,  trigger,
 
 export class HomeComponent {
     showDiv = true;
-    toggleDiv(){
-        this.showDiv = !this.showDiv;
-    }
  }

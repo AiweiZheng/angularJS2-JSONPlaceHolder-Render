@@ -7,9 +7,9 @@ describe('PostComponent', ()=> {
     })
 
     it('should include id in message', ()=> {
-        var id = 1;
+        let id = 1;
         
-        var result = component.getCommentImageUrl( id );
+        let result = component.getCommentImageUrl( id );
 
         expect( result ).toContain( id );
     })
