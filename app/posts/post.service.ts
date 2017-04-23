@@ -4,22 +4,32 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostService {
-    url = "https://jsonplaceholder.typicode.com/posts";
+    readonly baseUrl = "https://jsonplaceholder.typicode.com/posts";
+    userId_param_fix = "?userId=";
+    comments_fix = "/comments";
+    url; 
+    constructor(private _http: Http) {}
 
-    constructor(private _http: Http) {
-
+     getUserPosts(filter?) {
+        this.getPostUrl(filter);
+        return this._http.get(this.url).map(data => data.json());
     }
 
-    getUserPosts(filter?) {
+    getComments(postId) {
+        var commentUrl = this.getCommentUrl(postId);
+        this.getCommentUrl(postId);
+        return this._http.get(this.url).map(data => data.json());
+    }
+
+    getPostUrl(filter?){
         if (filter && filter.userId) {
-            return this._http.get(this.url + "?userId=" + filter.userId).map(data => data.json());
+            this.url = this.baseUrl + this.userId_param_fix + filter.userId;
         } else {//get all users' post when userId is null
-            return this._http.get(this.url).map(data => data.json());
+            this.url = this.baseUrl;
         }
     }
-    getComments(userId) {
-        var commentUrl = this.url + "/" + userId + "/comments";
-        return this._http.get(commentUrl).map(data => data.json());
-    }
 
+    getCommentUrl(postId){
+        this.url = this.baseUrl + "/" + postId + this.comments_fix;
+    }
 }

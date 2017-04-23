@@ -5,17 +5,21 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TodoService {
-    url = "https://jsonplaceholder.typicode.com";
+    readonly baseUrl = "https://jsonplaceholder.typicode.com";
+    users_fix = "/users/";
+    todos_fix = "/todos";
+    url;
     constructor(private _http: Http) { }
 
     getUserTodos(filter?) {
-        console.log("filter:" + filter);
+        this.getTodoUrl();
+        return this._http.get(this.url).map(data => data.json());
+    }
+    getTodoUrl(filter?){
         if (filter && filter.userId) {
-            var url = this.url + "/users/" + filter.userId + "/todos";
-            console.log("url: " + url);
-            return this._http.get(url).map(data => data.json());
+            this.url = this.baseUrl + this.users_fix + filter.userId + this.todos_fix;
         } else {//get all users' post when userId is null
-            return this._http.get(this.url + "/todos").map(data => data.json());
+            this.url = this.baseUrl + this.todos_fix;
         }
     }
 }
